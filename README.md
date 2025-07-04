@@ -1,8 +1,8 @@
 # genai_database
  A growing collection of hands-on projects pushing the boundaries of GenAI: covering LLMs, agents, RAG variants, multimodal systems, and general generative models. Built to explore, test, and create at the edge of what’s possible.
 
-## Why This Project?
-Over the past few months, I’ve been diving deep into the world of LLMs, agents, and tool integration, exploring different frameworks. To deepen my understanding and experiment with real-world applications, I’m building a series of practical, domain-specific systems 😃
+## Why These Projects?
+Over the past few months, I’ve been diving deep into the world of LLMs, agents, multimodal models, and tool integration, exploring different frameworks. To deepen my understanding and experiment with real-world applications, I’m building a series of practical, domain-specific systems 😃
 
 ## Content
 
