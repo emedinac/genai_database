@@ -6,10 +6,10 @@ Over the past few months, I’ve been diving deep into the world of LLMs, agents
 
 ## Content
 
-| Project | Description  | Tech Stack  | Link |
+|  Project  | Description  | Tech Stack  | Link |
 |----------------------|-----------------------------------------------------------------|----------------------------------------|----------------------------------------------|
 | 1. Prompt Benchmark Interface| A fully offline system leveraging Ollama to run local LLMs for experimenting with prompt engineering techniques, including Chain-of-Thought (CoT) and Self-Consistency on answering finance-related questions, particularly around stock market data and trends. This tool is designed for fast iteration, performance benchmarking, and analysis of prompt effectiveness in a domain where precision matters. Includes interactive parameter tuning (for the LLM and metrics), metrics visualization, and an experimentation workflow.   | LLMs, zero/few-shot (CoT,  Self-Consistency) propmt engineering, Gradio, Ollama, BeautifulSoup, Huggingface    | [View](https://github.com/emedinac/PromptBenchmarkInterface) |
 | 2. Resume Analyzer |    | | [View](https://github.com/emedinac/ResumeAnalyzer)  |
-| 3            |    | |
+| 3. LatentSync Enhanced with Optical Flow | This work is a proof of concept for multi-modal diffusion models, specifically a variant of [LatentSync](https://arxiv.org/abs/2412.09262) . The model's loss function is enhanced by integrating the optical flow technique, utilizing OpenCV, to improve mouth movement generation following a new audio input. This approach is inspired by the [VideoJAM](https://arxiv.org/abs/2502.02492) framework, which emphasizes joint appearance-motion representations to enhance motion coherence in video generation. The adaptation aims to synchronize audio features with video context, thereby improving temporal alignment and realism in the generated videos. This implementation was profiled in performance, and also adapted and evaluated exclusively using the HDTF dataset, a high-resolution audio-visual dataset designed for talking face generation. | Pytorch, Transformers, DeepCache, OpenCV | [View](https://github.com/emedinac/LatentSync)
 | 4            |    | |
 | 5            |    | |
