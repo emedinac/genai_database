@@ -1,6 +1,6 @@
 # AI/ML Engineering Portfolio
 
-Senior AI & Computer Vision Engineer. Production background in multimodal models, RAG pipelines, LLM fine-tuning, and agentic systems across fintech, HR tech, and ESG compliance domains.
+Senior AI & Computer Vision Engineer. Production background in multimodal models, RAG pipelines, LLM fine-tuning, and agentic systems across fintech, business workflows, HR tech, social media, and ESG compliance domains.
 
 ---
 
