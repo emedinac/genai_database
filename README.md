@@ -1,7 +1,6 @@
 # AI/ML Engineering Portfolio
 
-Senior AI & Computer Vision Engineer. Production background in multimodal models, RAG pipelines, LLM fine-tuning, and agentic systems across fintech, business workflows, HR tech, social media, and ESG compliance domains.
-
+Senior AI and Computer Vision Engineer with production experience in multimodal models, RAG pipelines, LLM fine-tuning, and agentic systems. Background spans fintech, HR tech, ESG compliance, and video generation.
 ---
 
 ## Projects
@@ -34,14 +33,14 @@ Interfaces    Gradio, FastAPI
 ### 1. Prompt Benchmark Interface
 **Domain:** Financial NLP | LLM evaluation
 
-**Problem:** Comparing prompt strategies — zero-shot, few-shot, Chain-of-Thought, Self-Consistency — on financial Q&A requires reproducible, side-by-side benchmarks. Ad-hoc notebook runs produce no baselines and no comparability across iterations. API-dependent tooling is unsuitable for sensitive financial data.
+Comparing prompt strategies across iterations — zero-shot, few-shot, Chain-of-Thought, Self-Consistency — requires reproducible baselines. Notebook-based runs don't give you that, and API-dependent tooling is a non-starter for sensitive financial data.
 
-**Solution:** Fully offline benchmarking system running local LLMs via Ollama. Covers prompt strategy comparison on stock market Q&A with interactive parameter tuning and metrics visualization — designed for fast, reproducible iteration without external dependencies.
+This is a fully offline benchmarking system running local LLMs via Ollama. It covers prompt strategy comparison on financial Q&A with interactive parameter tuning and metrics visualization. The emphasis is on fast iteration without external dependencies or data leaving the machine.
 
 | Component | Detail |
 |---|---|
-| LLM runtime | Ollama (fully local, no API calls) |
-| Strategies compared | Zero-shot, few-shot, CoT, Self-Consistency |
+| LLM runtime | Ollama (fully local) |
+| Strategies | Zero-shot, few-shot, CoT, Self-Consistency |
 | Domain | Financial Q&A, stock market data (BeautifulSoup) |
 | Interface | Gradio — parameter tuning + metrics dashboard |
 
@@ -52,16 +51,16 @@ Interfaces    Gradio, FastAPI
 ### 2. Resume Analyzer
 **Domain:** HR tech | Recruiting automation
 
-**Problem:** Keyword-matching ATS systems reject qualified candidates by ignoring semantic relationships between skills, experience, and role requirements. A backend engineer with 8 years of Kotlin experience fails a "5+ years Kotlin" filter. Hiring decisions need explainability — a score alone is not actionable for a recruiter.
+Standard ATS systems match keywords, which means a backend engineer with eight years of Kotlin experience can fail a "5+ years Kotlin" filter. Beyond the retrieval problem, a compatibility score alone isn't useful to a recruiter — they need to know why.
 
-**Solution:** RAG-based evaluation system that retrieves semantically relevant candidate profile sections, generates a quantitative compatibility score, and produces a qualitative explanation per decision — grounded in retrieved evidence, not black-box inference.
+This system uses RAG to retrieve semantically relevant sections of a candidate profile, produces a quantitative compatibility score, and generates a qualitative explanation grounded in the retrieved evidence. Every decision is traceable back to a specific passage, not a black-box inference.
 
 | Component | Detail |
 |---|---|
 | Retrieval | RAG over candidate profiles |
 | Vector stores | FAISS, ChromaDB |
 | Orchestration | LangChain |
-| Evaluation | LLM-as-judge for qualitative scoring |
+| Evaluation | LLM-as-judge |
 | Interface | Gradio |
 
 [View repo](https://github.com/emedinac/ResumeAnalyzer)
@@ -71,16 +70,16 @@ Interfaces    Gradio, FastAPI
 ### 3. LatentSync Enhanced with Optical Flow
 **Domain:** Multimodal generative models | Audio-visual synthesis
 
-**Problem:** Lip-sync diffusion models optimize for per-frame appearance quality but lack explicit temporal motion constraints. The result is mouth movements that are visually plausible in isolation but incoherent across frames — a known limitation of LatentSync. The VideoJAM framework demonstrated that joint appearance-motion representations improve motion coherence in video generation; this had not been applied to talking-face synthesis.
+LatentSync optimizes per-frame appearance quality but has no explicit temporal motion constraint. The result is mouth movements that look plausible in isolation but lose coherence across frames. VideoJAM showed that joint appearance-motion representations improve temporal consistency in video generation — this work applies that idea to talking-face synthesis.
 
-**Contribution:** Modified LatentSync's loss function to incorporate optical flow as an auxiliary motion supervision signal, enforcing temporal consistency between frames during training. Profiled for inference performance using DeepCache. Evaluated exclusively on HDTF (high-resolution audio-visual dataset for talking face generation).
+The modification adds optical flow as an auxiliary motion supervision signal in LatentSync's loss function, directly penalizing frame-to-frame inconsistency during training. Inference was profiled and optimized with DeepCache. Evaluation used HDTF, a high-resolution audio-visual dataset designed specifically for talking-face generation.
 
 | Component | Detail |
 |---|---|
 | Base model | [LatentSync](https://arxiv.org/abs/2412.09262) |
-| Motion supervision | Optical flow via OpenCV, inspired by [VideoJAM](https://arxiv.org/abs/2502.02492) |
+| Motion supervision | Optical flow (OpenCV), inspired by [VideoJAM](https://arxiv.org/abs/2502.02492) |
 | Inference optimization | DeepCache |
-| Evaluation | HDTF dataset |
+| Evaluation dataset | HDTF |
 | Framework | PyTorch, HuggingFace Transformers |
 
 [View repo](https://github.com/emedinac/LatentSync)
@@ -90,15 +89,15 @@ Interfaces    Gradio, FastAPI
 ### 4. LoRA Fine-tuning Pipeline
 **Domain:** Scientific literature | NLP research
 
-**Problem:** Fine-tuning LLMs for domain-specific research Q&A (arXiv, PubMed) without API access requires parameter-efficient methods that fit on consumer hardware. Standard BLEU and ROUGE-L metrics measure n-gram overlap but miss semantic correctness — a paraphrastic correct answer scores near zero. BERTScore is necessary for meaningful evaluation in this domain.
+Fine-tuning LLMs for domain-specific Q&A on arXiv and PubMed without API access means working within the constraints of consumer hardware. LoRA handles that. The harder problem is evaluation: BLEU and ROUGE-L measure n-gram overlap, so a semantically correct paraphrase scores near zero. BERTScore is necessary for this domain to mean anything.
 
-**Solution:** End-to-end framework for fine-tuning and evaluating open LLMs using LoRA, with DPO alignment and three-metric evaluation (BLEU, ROUGE-L, BERTScore). No external APIs — full pipeline runs locally.
+The pipeline covers fine-tuning with LoRA, alignment with DPO, and three-metric evaluation — BLEU, ROUGE-L, and BERTScore. Everything runs locally with no external API calls.
 
 | Component | Detail |
 |---|---|
 | Parameter-efficient tuning | PEFT, LoRA |
-| Alignment | TRL, Direct Preference Optimization (DPO) |
-| Evaluation metrics | BLEU, ROUGE-L, BERTScore |
+| Alignment | TRL, DPO |
+| Evaluation | BLEU, ROUGE-L, BERTScore |
 | Tasks | Q&A, summarization |
 | Datasets | arXiv, PubMed |
 | Framework | HuggingFace Transformers |
