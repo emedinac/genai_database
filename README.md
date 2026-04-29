@@ -12,7 +12,7 @@ Senior AI and Computer Vision Engineer with production experience in multimodal 
 | 2 | [Resume Analyzer](#2-resume-analyzer) | HR Tech | Semantic candidate ranking with explainable scoring, beyond keyword matching | RAG, LangChain, FAISS, ChromaDB |
 | 3 | [LatentSync Enhanced with Optical Flow](#3-latentsync-enhanced-with-optical-flow) | Multimodal / Video Gen | Temporal motion incoherence in lip-sync diffusion models | PyTorch, OpenCV, DeepCache |
 | 4 | [LoRA Fine-tuning Pipeline](#4-lora-fine-tuning-pipeline) | Scientific NLP | Domain-specific LLM fine-tuning on consumer hardware with semantic evaluation | PEFT, LoRA, TRL, DPO, HuggingFace |
-
+| 5 | [Automated GDPR Compliance Checker](#5-automated-gdpr-compliance-checker) | Legal Tech | Manual GDPR contract review costs ~20h/month in legal fees for Mittelstand companies | FastAPI, LangGraph, Ollama, PyMuPDF |
 ---
 
 ## Stack
@@ -104,3 +104,22 @@ The pipeline covers fine-tuning with LoRA, alignment with DPO, and three-metric 
 | Framework | HuggingFace Transformers |
 
 [View repo](https://github.com/emedinac/Lora4Research)
+
+---
+
+### 5. Automated GDPR Compliance Checker
+**Domain:** Legal Tech | Compliance automation
+
+Reviewing contracts and privacy policies for GDPR/DSGVO compliance is done manually by lawyers or compliance officers. A Mittelstand with 50 contracts per month loses roughly 20 hours of expensive legal time on routine screening.
+
+This API automates the screening layer. It accepts a PDF or raw text, runs it through a LangGraph pipeline that chunks the document and classifies each section against 11 GDPR articles using a local LLM, and returns a structured compliance report with risk scores, violated articles, and remediation recommendations.
+
+| Component | Detail |
+|---|---|
+| Orchestration | LangGraph |
+| LLM runtime | Ollama — gemma3:4b (fully local, no API cost) |
+| Document parsing | PyMuPDF |
+| API | FastAPI + Pydantic v2 |
+| Articles covered | Art.5, 6, 7, 13, 17, 20, 25, 28, 32, 33, 44-49 |
+
+[View repo](https://github.com/emedinac/automated-gdpr-compliance-checker)
