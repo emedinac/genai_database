@@ -1,8 +1,8 @@
-# genai_database
- A growing collection of hands-on projects pushing the boundaries of GenAI: covering LLMs, agents, RAG variants, multimodal systems, and general generative models. Built to explore, test, and create at the edge of what’s possible.
+# AI/ML Engineering Portfolio — Eduardo Medina
 
-## Why These Projects?
-Over the past few months, I’ve been diving deep into the world of LLMs, agents, multimodal models, and tool integration, exploring different frameworks. To deepen my understanding and experiment with real-world applications, I’m building a series of practical, domain-specific systems 😃
+Senior AI & Computer Vision Engineer with production experience building end-to-end ML systems, from model research to deployed, monitored services. Background spans multimodal models, RAG pipelines, LLM fine-tuning, agentic systems, and MLOps. I tried to map my experiences in different companies and sectors in these projects wih different applications.
+
+> Systems that solve real business problems. Not demos.
 
 ## Content
 
