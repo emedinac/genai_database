@@ -13,6 +13,7 @@ Senior AI and Computer Vision Engineer with production experience in multimodal 
 | 3 | [LatentSync Enhanced with Optical Flow](#3-latentsync-enhanced-with-optical-flow) | Multimodal / Video Gen | Temporal motion incoherence in lip-sync diffusion models | PyTorch, OpenCV, DeepCache |
 | 4 | [LoRA Fine-tuning Pipeline](#4-lora-fine-tuning-pipeline) | Scientific NLP | Domain-specific LLM fine-tuning on consumer hardware with semantic evaluation | PEFT, LoRA, TRL, DPO, HuggingFace |
 | 5 | [Automated GDPR Compliance Checker](#5-automated-gdpr-compliance-checker) | Legal Tech | Manual GDPR contract review costs ~20h/month in legal fees for Mittelstand companies | FastAPI, LangGraph, Ollama, PyMuPDF |
+| 6 | [Production-ready AI Templates for Consulting](#6-production-ready-ai-templates-for-consulting) (ongoing) | Consulting Tools | Inconsistent project structures across client engagements; no standardized foundation for production ML | Copier, DVC, MLflow, FastAPI, Prometheus, Grafana |
 ---
 
 ## Stack
@@ -123,3 +124,24 @@ This API automates the screening layer. It accepts a PDF or raw text, runs it th
 | Articles covered | Art.5, 6, 7, 13, 17, 20, 25, 28, 32, 33, 44-49 |
 
 [View repo](https://github.com/emedinac/automated-gdpr-compliance-checker)
+
+---
+
+### 6. Production-ready AI Templates for Consulting
+**Domain:** Consulting tools | Project scaffolding
+
+Consulting firms deliver AI/ML projects across diverse clients, but each engagement starts from scratch — inconsistent project structures, ad-hoc tooling choices, and no standardized foundation for production ML. This wastes time on boilerplate instead of delivering value.
+
+This is an end-to-end project template built with Copier that generates a standardized, production-grade ML project structure for any new client engagement. It includes integrated tooling for data versioning (DVC), experiment tracking (MLflow), model serving (FastAPI), and monitoring (Prometheus + Grafana). Unlike Cookiecutter, Copier supports updates — template improvements propagate to all existing projects.
+
+| Component | Detail |
+|---|---|
+| Template engine | Copier |
+| Data versioning | DVC pipeline (ingest → preprocess → train → eval) |
+| Experiment tracking | MLflow (via Docker Compose) |
+| Model serving | FastAPI with health checks & versioning |
+| Monitoring | Prometheus + Grafana drift detection |
+| CI/CD | GitHub Actions (test → train on PR → deploy on merge) |
+| Documentation | ADR for every tool choice, AGENTS.md eval loop |
+
+[View repo](https://github.com/emedinac/production-ready-ai-templates-for-consulting) *(ongoing)*
