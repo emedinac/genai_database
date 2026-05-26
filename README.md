@@ -13,7 +13,8 @@ Senior AI and Computer Vision Engineer with production experience in multimodal 
 | 3 | [LatentSync Enhanced with Optical Flow](#3-latentsync-enhanced-with-optical-flow) | Multimodal / Video Gen | Temporal motion incoherence in lip-sync diffusion models | PyTorch, OpenCV, DeepCache |
 | 4 | [LoRA Fine-tuning Pipeline](#4-lora-fine-tuning-pipeline) | Scientific NLP | Domain-specific LLM fine-tuning on consumer hardware with semantic evaluation | PEFT, LoRA, TRL, DPO, HuggingFace |
 | 5 | [Automated GDPR Compliance Checker](#5-automated-gdpr-compliance-checker) | Legal Tech | Manual GDPR contract review costs ~20h/month in legal fees for Mittelstand companies | FastAPI, LangGraph, Ollama, PyMuPDF |
-| 6 | [Production-ready AI Templates for Consulting](#6-production-ready-ai-templates-for-consulting) (ongoing) | Consulting Tools | Inconsistent project structures across client engagements; no standardized foundation for production ML | Copier, DVC, MLflow, FastAPI, Prometheus, Grafana |
+| 6 | [Production-ready AI Templates for Consulting](#6-production-ready-ai-templates-for-consulting) | Consulting Tools | Inconsistent project structures across client engagements; no standardized foundation for production ML | Copier, DVC, MLflow, FastAPI, Prometheus, Grafana |
+| 7 | [Scalable Investment Research Agent](#7-scalable-investment-research-agent) (in progress) | FinTech / Agentic AI | Retail investors need fast, source-grounded company analysis without unsafe investment recommendations | FastAPI, LangGraph, PostgreSQL, Redis, Prometheus, Grafana, Kubernetes |
 ---
 
 ## Stack
@@ -144,4 +145,27 @@ This is an end-to-end project template built with Copier that generates a standa
 | CI/CD | GitHub Actions (test → train on PR → deploy on merge) |
 | Documentation | ADR for every tool choice, AGENTS.md eval loop |
 
-[View repo](https://github.com/emedinac/production-ready-ai-templates-for-consulting) *(ongoing)*
+[View repo](https://github.com/emedinac/production-ready-ai-templates-for-consulting)
+
+---
+
+### 7. Scalable Investment Research Agent
+**Domain:** FinTech | Agentic AI | Production LLM systems
+
+Retail investors repeatedly ask questions like "Should I buy Google now?", but raw finance portals provide data without synthesis, and direct investment recommendations create regulatory risk under MiFID II in the EU. This project reframes the problem as source-grounded investment research: the system analyzes earnings reports, current prices, fundamentals, valuation signals, and recent news while explicitly avoiding personalized buy/sell advice.
+
+The architecture is designed for production scale: a FastAPI gateway validates requests, Redis handles rate limiting and semantic cache lookups, async workers run a LangGraph research agent, and PostgreSQL/TimescaleDB persist users, query history, token usage, prices, and analysis outputs. The core engineering challenge is cost and latency control at high volume: 10M requests/day requires cache-first design, model routing, prompt compression, queue-based processing, and full observability.
+
+| Component | Detail |
+|---|---|
+| API layer | FastAPI, nginx, Redis rate limiting |
+| Agent orchestration | LangGraph with explicit router, tools, evaluator, guardrails, formatter |
+| Data sources | Earnings reports, SEC/company filings, financial news, yfinance/Alpha Vantage |
+| Storage | PostgreSQL, TimescaleDB, Redis Stack, MinIO |
+| Token optimization | Semantic cache, prompt compression, model routing, token/cost tracker |
+| Compliance guardrails | MiFID II-aware output filter, risk disclaimer, no direct buy/sell recommendations |
+| Observability | Langfuse traces, Prometheus metrics, Grafana dashboards |
+| Evaluation | RAGAS, LLM-as-judge, MLflow prompt versioning, DVC evaluation datasets |
+| Deployment | Docker Compose locally, Kubernetes HPA for API and worker autoscaling |
+
+[View repo](https://github.com/emedinac/scalable-investment-research-agent) *(in progress)*
