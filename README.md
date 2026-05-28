@@ -163,7 +163,7 @@ The architecture is designed for production scale: a FastAPI gateway validates r
 | Data sources | Earnings reports, SEC/company filings, financial news, yfinance/Alpha Vantage |
 | Storage | PostgreSQL, TimescaleDB, Redis Stack, MinIO |
 | Token optimization | Semantic cache, prompt compression, model routing, token/cost tracker |
-| Compliance guardrails | MiFID II-aware output filter, risk disclaimer, no direct buy/sell recommendations |
+| Compliance guardrails | MiFID II-aware output filter, risk, no direct buy/sell recommendations |
 | Observability | Langfuse traces, Prometheus metrics, Grafana dashboards |
 | Evaluation | RAGAS, LLM-as-judge, MLflow prompt versioning, DVC evaluation datasets |
 | Deployment | Docker Compose locally, Kubernetes HPA for API and worker autoscaling |
