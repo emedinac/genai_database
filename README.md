@@ -14,7 +14,8 @@ Senior AI and Computer Vision Engineer with production experience in multimodal 
 | 4 | [LoRA Fine-tuning Pipeline](#4-lora-fine-tuning-pipeline) | Scientific NLP | Domain-specific LLM fine-tuning on consumer hardware with semantic evaluation | PEFT, LoRA, TRL, DPO, HuggingFace |
 | 5 | [Automated GDPR Compliance Checker](#5-automated-gdpr-compliance-checker) | Legal Tech | Manual GDPR contract review costs ~20h/month in legal fees for Mittelstand companies | FastAPI, LangGraph, Ollama, PyMuPDF |
 | 6 | [Production-ready AI Templates for Consulting](#6-production-ready-ai-templates-for-consulting) | Consulting Tools | Inconsistent project structures across client engagements; no standardized foundation for production ML | Copier, DVC, MLflow, FastAPI, Prometheus, Grafana |
-| 7 | [Scalable Investment Research Agent](#7-scalable-investment-research-agent) (in progress) | FinTech / Agentic AI | Retail investors need fast, source-grounded company analysis without unsafe investment recommendations | FastAPI, LangGraph, PostgreSQL, Redis, Prometheus, Grafana, Kubernetes |
+| 7 | [Automated Generative Marketing Collateral](#7-automated-generative-marketing-collateral) | Marketing Automation | Personalized B2B marketing content is manual, difficult to ground in company context, and hard to scale | FastAPI, Gemini, PDF/OCR extraction, Streamlit, Prometheus, GCP |
+| 8 | [Scalable Investment Research Agent](#8-scalable-investment-research-agent) (in progress) | FinTech / Agentic AI | Retail investors need fast, source-grounded company analysis without unsafe investment recommendations | FastAPI, LangGraph, PostgreSQL, Redis, Prometheus, Grafana, Kubernetes |
 ---
 
 ## Stack
@@ -25,6 +26,8 @@ LLM Infra     Ollama, HuggingFace Transformers, PEFT/LoRA, TRL, DPO
 RAG           LangChain, FAISS, ChromaDB, LLM-as-judge
 CV            PyTorch, OpenCV, optical flow, DeepCache
 Interfaces    Gradio, FastAPI
+Marketing     Gemini, pdfplumber, pypdf, Tesseract OCR, Streamlit
+Cloud         Google Cloud Run, Cloud Storage, Pub/Sub, Document AI, Firestore, Vertex AI
 ```
 
 ---
@@ -149,7 +152,29 @@ This is an end-to-end project template built with Copier that generates a standa
 
 ---
 
-### 7. Scalable Investment Research Agent
+### 7. Automated Generative Marketing Collateral
+**Domain:** Marketing automation | Grounded content generation
+
+Creating personalized B2B newsletters, brochures, case studies, slogans, and event invitations currently requires manually reading company material and turning it into usable copy. This project automates that workflow while keeping the generated content grounded in both the sender and receiver context.
+
+The prototype accepts company PDFs, extracts text, tables, embedded images, and supported OCR content, then generates structured, template-ready collateral with deterministic validation, source-reference prompts, grounding checks, and explicit human-review flags. It runs locally with a synchronous FastAPI API and Streamlit demo. The production design extends this with Cloud Run, Cloud Storage, Pub/Sub, Document AI, Firestore, Vertex AI/Gemini, and managed observability.
+
+| Component | Detail |
+|---|---|
+| API and interface | FastAPI, Streamlit |
+| Generation | Google Gemini via the Google GenAI SDK; safe fallback drafts when unavailable |
+| Document processing | pdfplumber for text/tables, pypdf for embedded images, Tesseract OCR |
+| Content types | Newsletter, brochure, slogan, case study, event invitation |
+| Validation and grounding | Pydantic structured output, word-limit checks, source references, review flags |
+| Evaluation | Curated sender/receiver fixtures, integration tests, template and faithfulness checks |
+| Observability | Prometheus, Grafana, optional PostgreSQL usage tracking |
+| Production target | Cloud Run, Cloud Storage, Pub/Sub, Document AI, Firestore, Vertex AI/Gemini |
+
+[View repo](https://github.com/emedinac/automated-marketing-content-creation)
+
+---
+
+### 8. Scalable Investment Research Agent
 **Domain:** FinTech | Agentic AI | Production LLM systems
 
 Retail investors repeatedly ask questions like "Should I buy Google now?", but raw finance portals provide data without synthesis, and direct investment recommendations create regulatory risk under MiFID II in the EU. This project reframes the problem as source-grounded investment research: the system analyzes earnings reports, current prices, fundamentals, valuation signals, and recent news while explicitly avoiding personalized buy/sell advice.
