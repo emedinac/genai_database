@@ -14,7 +14,7 @@ Senior AI and Computer Vision Engineer with production experience in multimodal 
 | 4 | [LoRA Fine-tuning Pipeline](#4-lora-fine-tuning-pipeline) | Scientific NLP | Domain-specific LLM fine-tuning on consumer hardware with semantic evaluation | PEFT, LoRA, TRL, DPO, HuggingFace |
 | 5 | [Automated GDPR Compliance Checker](#5-automated-gdpr-compliance-checker) | Legal Tech | Manual GDPR contract review costs ~20h/month in legal fees for Mittelstand companies | FastAPI, LangGraph, Ollama, PyMuPDF |
 | 6 | [Production-ready AI Templates for Consulting](#6-production-ready-ai-templates-for-consulting) | Consulting Tools | Inconsistent project structures across client engagements; no standardized foundation for production ML | Copier, DVC, MLflow, FastAPI, Prometheus, Grafana |
-| 7 | [Automated Generative Marketing Collateral](#7-automated-generative-marketing-collateral) | Marketing Automation | Personalized B2B marketing content is manual, difficult to ground in company context, and hard to scale | FastAPI, Gemini, PDF/OCR extraction, Streamlit, Prometheus, GCP |
+| 7 | [automated-marketing-content-creation](#7-automated-marketing-content-creation) | Marketing Automation | Personalized B2B marketing content is manual, difficult to ground in company context, and hard to scale | FastAPI, Gemini, PDF/OCR extraction, Streamlit, Prometheus, GCP |
 | 8 | [Scalable Investment Research Agent](#8-scalable-investment-research-agent) (in progress) | FinTech / Agentic AI | Retail investors need fast, source-grounded company analysis without unsafe investment recommendations | FastAPI, LangGraph, PostgreSQL, Redis, Prometheus, Grafana, Kubernetes |
 ---
 
@@ -152,7 +152,7 @@ This is an end-to-end project template built with Copier that generates a standa
 
 ---
 
-### 7. Automated Generative Marketing Collateral
+### 7. automated-marketing-content-creation
 **Domain:** Marketing automation | Grounded content generation
 
 Creating personalized B2B newsletters, brochures, case studies, slogans, and event invitations currently requires manually reading company material and turning it into usable copy. This project automates that workflow while keeping the generated content grounded in both the sender and receiver context.
